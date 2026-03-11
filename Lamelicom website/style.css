@@ -65,6 +65,13 @@ font-size:18px;
 padding:8px;
 }
 
+/* Remove bullet points */
+
+ul{
+list-style:none;
+padding:0;
+}
+
 /* Footer */
 
 footer{
@@ -132,3 +139,4 @@ cursor:pointer;
 form button:hover{
 background:#2b2a7f;
 }
+
