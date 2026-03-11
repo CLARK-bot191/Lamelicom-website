@@ -74,3 +74,61 @@ text-align:center;
 padding:20px;
 margin-top:40px;
 }
+
+/* HERO SECTION */
+
+.hero{
+padding:40px;
+text-align:center;
+background:#f4f4f4;
+}
+
+/* SERVICES SECTION WITH CARDS */
+
+.services-section{
+padding:40px;
+text-align:center;
+}
+
+.services-container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.service-box{
+background:white;
+padding:20px;
+width:250px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.service-box h3{
+color:#2b2a7f;
+}
+
+/* CONTACT FORM */
+
+form input, form textarea{
+width:60%;
+padding:10px;
+margin:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+form button{
+background:#e60023;
+color:white;
+border:none;
+padding:10px 20px;
+font-size:16px;
+border-radius:5px;
+cursor:pointer;
+}
+
+form button:hover{
+background:#2b2a7f;
+}
