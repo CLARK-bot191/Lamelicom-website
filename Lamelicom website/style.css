@@ -1,74 +1,143 @@
+/*  BASE & GLOBAL RESET */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     background: #ffffff;
     line-height: 1.6;
+    padding-top: 100px;                     /* Required space for fixed header */
 }
 
-/* Header */
-
-header{
-    background: #2b2a7f;
-    color: #ffeb3b;
-    text-align: center;
-    padding: 30px 10px;
+/* COLOR & TYPOGRAPHY VARIABLES */
+:root {
+    --primary-blue:    #2b2a7f;
+    --accent-red:      #e60023;
+    --yellow-highlight:#ffeb3b;
+    --dark-green:      #006400;
+    --light-bg:        #f4f4f4;
+    --white:           #ffffff;
+    --text-dark:       #333;
+    --text-medium:     #444;
+    --text-light:      #555;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 36px;
+/* HEADER (fixed, logo left + nav right) */
+header {
+    background: var(--primary-blue);
+    color: var(--yellow-highlight);
+    padding: 15px 30px;
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
+.logo-container {
+    flex-shrink: 0;
+}
 
-/* Navigation */
+.logo-img {
+    max-height: 60px;
+    width: auto;
+    display: block;
+}
 
 nav {
-    background: #e60023;
-    padding: 15px;
-    text-align: center;
+    flex: 1;
+    text-align: right;
 }
 
 nav ul {
     display: flex;
-    justify-content: center;
-    gap: 25px;
+    justify-content: flex-end;
+    gap: 20px;
     list-style: none;
-    padding: 0;
     margin: 0;
-    flex-wrap: wrap;
+    padding: 0;
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 15px;
+    white-space: nowrap;
+    padding: 6px 0;
 }
 
 nav a:hover {
-    color: #ffeb3b;
+    color: var(--yellow-highlight);
 }
 
-/* Sections */
+/* Mobile: center logo, stack/wrap nav links */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .logo-container {
+        margin-bottom: 12px;
+        width: 100%;
+        text-align: center;
+    }
+    nav {
+        width: 100%;
+        text-align: center;
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px 24px;
+    }
+    nav a {
+        font-size: 16px;
+    }
+    .logo-img {
+        max-height: 50px;
+    }
+}
 
-section{
-    padding:40px 20px;
+/* GENERAL SECTION STYLES */
+section {
+    padding: 40px 20px;
     text-align: center;
 }
 
-/* Hero Banner */
-
-.banner-image{
-width:90%;
-max-width: 800px;
-    margin: 20px auto;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+h2.section-title {
+    color: var(--primary-blue);
+    font-size: 32px;
+    margin-bottom: 40px;
 }
 
-/* Services cards */
+/* HERO SECTION (used on every page) */
+.hero-section {
+    background: var(--light-bg);
+    padding: 80px 20px;
+    text-align: center;
+}
 
-.services-container {
+.hero-section h1 {
+    font-size: 42px;
+    color: var(--primary-blue);
+    margin: 0 0 15px;
+}
+
+.hero-section .subtitle {
+    font-size: 24px;
+    color: var(--text-dark);
+    margin: 0 0 30px;
+}
+
+/* CARDS & GRIDS (services, why, core values, team) */
+.services-container,
+.why-grid,
+.team-grid,
+.core-values {
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -76,27 +145,51 @@ max-width: 800px;
     margin-top: 30px;
 }
 
-.service-box {
+.service-box,
+.why-box,
+.team-member {
     background: white;
     padding: 25px;
     width: 280px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s;
+    transition: transform 0.3s;
+    text-align: center;
 }
 
-.service-box:hover {
+.service-box:hover,
+.why-box:hover,
+.team-member:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-.service-box h3 {
-    color: #2b2a7f;
+.service-box h3,
+.why-box h3,
+.team-member h3 {
+    color: var(--primary-blue);
     margin-bottom: 12px;
 }
 
-/* Form */
-form input, form textarea {
+.team-member img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.team-member .info {
+    padding: 20px;
+}
+
+.team-member .role {
+    color: var(--accent-red);
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+/* FORM & BUTTONS */
+form input,
+form textarea {
     width: 90%;
     max-width: 500px;
     padding: 12px;
@@ -108,7 +201,7 @@ form input, form textarea {
 }
 
 form button {
-    background: #e60023;
+    background: var(--accent-red);
     color: white;
     border: none;
     padding: 12px 30px;
@@ -119,108 +212,11 @@ form button {
 }
 
 form button:hover {
-    background: #2b2a7f;
-}
-
-/* Footer same everywhere */
-footer {
-    background: #e60023;
-    color: white;
-    text-align: center;
-    padding: 25px 15px;
-    margin-top: 40px;
-}
-
-footer p {
-    margin: 5px 0;
-}
-
-/* Mobile friendly */
-@media (max-width: 600px) {
-    header h1 { font-size: 28px; }
-    nav ul { gap: 15px; font-size: 15px; }
-    .service-box { width: 90%; }
-}
-
-
-/* WhatsApp Floating Button */
-.whatsapp-float {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 999;
-    width: 60px;
-    height: 60px;
-    background: #25D366;  /* Official WhatsApp green */
-    color: white;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 35px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-.whatsapp-float:hover {
-    background: #128C7E;  /* Darker green on hover */
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
-
-.whatsapp-float i {
-    font-size: 40px;
-}
-
-/* Logo Styles */
-.logo-container {
-    text-align: center;
-    padding: 15px 0;
-}
-
-.logo {
-    max-width: 300px;      
-    width: 90%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-.tagline {
-    color: #006400;        /* Dark green to match logo */
-    font-size: 18px;
-    font-style: italic;
-    margin: 10px 0 0;
-}
-
-@media (max-width: 600px) {
-    .logo { max-width: 220px; }
-    .tagline { font-size: 16px; }
-}
-
-/* DexNova-inspired sections - add to your style.css */
-.hero-section {
-    background: #f4f4f4;
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.hero-section h1 {
-    font-size: 42px;
-    color: #2b2a7f;
-    margin: 0 0 15px;
-}
-
-.hero-section p.subtitle {
-    font-size: 24px;
-    color: #333;
-    margin: 0 0 30px;
+    background: var(--primary-blue);
 }
 
 .cta-buttons a {
-    background: #e60023;
+    background: var(--accent-red);
     color: white;
     padding: 16px 40px;
     border-radius: 8px;
@@ -231,175 +227,10 @@ footer p {
 }
 
 .cta-buttons a.blue {
-    background: #2b2a7f;
-}
-
-.welcome-section {
-    padding: 50px 20px;
-    max-width: 1000px;
-    margin: auto;
-    text-align: center;
-}
-
-.welcome-section h2 {
-    color: #2b2a7f;
-    font-size: 32px;
-}
-
-.welcome-section p {
-    font-size: 18px;
-    line-height: 1.7;
-    color: #444;
-}
-
-.why-section {
-    background: #f4f4f4;
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.why-section h2 {
-    color: #2b2a7f;
-    font-size: 32px;
-    margin-bottom: 40px;
-}
-
-.why-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    max-width: 1100px;
-    margin: auto;
-}
-
-.why-box {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    width: 300px;
-}
-
-.why-box h3 {
-    color: #e60023;
-    font-size: 24px;
-}
-
-.why-box p {
-    font-size: 17px;
-}
-
-/* Make hero headline bigger on desktop */
-@media (min-width: 768px) {
-    .hero-section h1 { font-size: 48px; }
-    .hero-section p.subtitle { font-size: 26px; }
-}
-
-/* Colors & shared styles moved from inline to CSS */
-
-:root {
-    --primary-blue: #2b2a7f;
-    --accent-red: #e60023;
-    --yellow-highlight: #ffeb3b;
-    --dark-green: #006400;
-    --light-bg: #f4f4f4;
-    --white: #ffffff;
-    --text-dark: #333;
-    --text-medium: #444;
-    --text-light: #555;
-}
-
-/* Header tagline (green under logo) */
-.tagline {
-    color: var(--dark-green);
-    font-size: 18px;
-    margin: 10px 0 0;
-    font-style: italic;
-}
-
-/* Hero headline */
-.hero-section h1 {
-    color: var(--primary-blue);
-    margin: 0 0 15px;
-}
-
-/* Hero subtitle */
-.hero-section .subtitle {
-    color: var(--text-dark);
-}
-
-/* CTA buttons */
-.cta-buttons a {
-    background: var(--accent-red);
-    color: var(--white);
-    padding: 16px 40px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 10px;
-    display: inline-block;
-    transition: background 0.3s;
-}
-
-.cta-buttons a:hover {
     background: var(--primary-blue);
 }
 
-.cta-buttons a.blue {
-    background: var(--primary-blue);
-}
-
-.cta-buttons a.blue:hover {
-    background: var(--accent-red);
-}
-
-/* Welcome / content text */
-.welcome-section p,
-.about-content p {
-    color: var(--text-medium);
-    line-height: 1.7;
-}
-
-/* Section headings */
-h2.section-title {
-    color: var(--primary-blue);
-    font-size: 32px;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-/* Links "Learn more" style */
-.learn-more {
-    color: var(--accent-red);
-    font-weight: bold;
-    font-size: 18px;
-    text-decoration: none;
-}
-
-.learn-more:hover {
-    text-decoration: underline;
-}
-
-/* About page specific */
-.mission-vision h2 {
-    color: var(--primary-blue);
-    margin-top: 50px;
-    font-size: 28px;
-}
-
-/* Core values cards on about page */
-.core-values .why-box h3 {
-    color: var(--accent-red);
-}
-
-/* Services page extras */
-.service-detail {
-    font-size: 17px;
-    color: var(--text-medium);
-    margin: 15px 0;
-}
-
+/* SPECIAL SECTIONS */
 .short-courses {
     background: var(--light-bg);
     padding: 40px 20px;
@@ -433,19 +264,6 @@ h2.section-title {
     font-size: 20px;
 }
 
-/* Contact page extras */
-.contact-hero {
-    background: var(--light-bg);
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.contact-form-section {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
 .contact-info-box {
     background: var(--white);
     padding: 30px;
@@ -460,21 +278,107 @@ h2.section-title {
     margin-bottom: 20px;
 }
 
-.contact-info-box p {
-    font-size: 18px;
-    margin: 12px 0;
-    color: var(--text-medium);
-}
-
-.contact-info-box a {
-    color: var(--accent-red);
-    font-weight: bold;
-}
-
 .map-embed {
     border: none;
     border-radius: 12px;
     width: 100%;
     height: 400px;
     margin-top: 40px;
+}
+
+/* WHATSAPP FLOATING BUTTON */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background: #128C7E;
+    transform: scale(1.1);
+}
+
+.whatsapp-float i {
+    font-size: 40px;
+}
+
+/* 10. FOOTER */
+footer {
+    background: var(--accent-red);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+    font-size: 16px;
+}
+
+footer p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+footer a {
+    color: white;
+}
+
+footer .social {
+    margin: 20px 0;
+}
+
+footer .social a {
+    color: white;
+    font-size: 24px;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+footer .social a:hover {
+    color: var(--yellow-highlight);
+}
+
+footer .copyright {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 600px) {
+    section { padding: 30px 15px; }
+    .service-box, .team-member, .why-box { width: 90%; }
+    .logo-img { max-width: 220px; }
+    .hero-section { padding: 60px 15px; }
+    .hero-section h1 { font-size: 32px; }
+    .hero-section .subtitle { font-size: 20px; }
+}
+
+/* UTILITY CLASSES */
+.tagline {
+    color: var(--dark-green);
+    font-size: 18px;
+    font-style: italic;
+    margin: 10px 0 0;
+}
+
+.learn-more {
+    color: var(--accent-red);
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.learn-more:hover {
+    text-decoration: underline;
 }
