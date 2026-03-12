@@ -1,56 +1,76 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>Contact</title>
-<link rel="stylesheet" href="style.css">
+    <title>Contact Us - Lamelicom Consult Limited</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
 
 <header>
-<h1>Contact Us</h1>
+    <div style="text-align:center; padding:20px 0;">
+        <a href="index.html">
+            <img src="logo.png.jpg" alt="Lamelicom Consult Limited Logo" style="max-width:320px; width:90%; height:auto;">
+        </a>
+        <p class="tagline">Empowering Your Business</p>
+    </div>
 </header>
 
 <nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="services.html">Services</a>
-<a href="contact.html">Contact</a>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
 </nav>
 
-<section>
+<section class="hero-section contact-hero">
+    <h1>Contact Us</h1>
+    <p class="subtitle">We're Here to Help – Reach Out Today</p>
+</section>
 
-<h2>Send Us a Message</h2>
+<section class="contact-form-section">
+    <h2 class="section-title">Send Us a Message</h2>
+    
+    <form action="#" method="post">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="6" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
 
-<form>
+    <div class="contact-info-box">
+        <h3>Contact Information</h3>
+        <p><strong>Email:</strong> <a href="mailto:lamelicom@gmail.com">lamelicom@gmail.com</a></p>
+        <p><strong>Phone:</strong> 0773590376 | 0759579017</p>
+        <p><strong>Location:</strong> Kansanga – Ggaba Road, Kampala</p>
+    </div>
 
-<input type="text" placeholder="Your Name"><br><br>
-
-<input type="email" placeholder="Your Email"><br><br>
-
-<textarea placeholder="Your Message"></textarea><br><br>
-
-<button type="submit">Send Message</button>
-
-</form>
-
-<h3>Contact Information</h3>
-
-<p>Email: lamelicom@gmail.com</p>
-<p>Phone: 0773590376 | 0759579017</p>
-<p>Location: Kansanga – Ggaba Road</p>
-
+    <!-- Optional Google Maps embed – replace with your exact location link if you have one -->
+    <iframe 
+        class="map-embed"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.796!2d32.616!3d0.286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177d!2sKansanga%20Ggaba%20Road%2C%20Kampala!5e0!3m2!1sen!2sug!4v1690000000000"
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
 </section>
 
 <footer>
-
-<p>Lamelicom Consult Limited</p>
-<p>Kansanga – Ggaba Road</p>
-<p>Email: lamelicom@gmail.com</p>
-<p>Phone: 0773590376 | 0759579017</p>
-
+    <p>Lamelicom Consult Limited</p>
+    <p>Kansanga – Ggaba Road, Kampala</p>
+    <p>Email: lamelicom@gmail.com</p>
+    <p>Phone: 0773590376 | 0759579017</p>
 </footer>
+
+<a href="https://wa.me/256773590376?text=Hello%20Lamelicom%20Consult!%20I%20would%20like%20to%20know%20more%20about%20your%20services." 
+   class="whatsapp-float" 
+   target="_blank" 
+   title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 </body>
 </html>
